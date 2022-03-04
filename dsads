@@ -1,0 +1,614 @@
+ Tag("42", "Drafts at",
+                new TagOption
+                {
+                    Description = "Drafts at",
+                    Letter = "C",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,35})$", RegexOptions.Compiled) },
+                            Lines = 3,
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                },
+                new TagOption
+                {
+                    Description = "Drawee",
+                    Letter = "A",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^(?<PartyIdentifier>(\/[A-Z]{1,1})?(\/[A-Z0-9a-z\/\-?().,'+: ]{1,34})?)?$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "PartyIdentifier" },
+                            Optional = true
+                        },
+                        new TagOptionRow {
+                            Regex = new[] { new Regex("^(?<IdentifierCode>[A-Z]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3})?)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "IdentifierCode" }
+                        }
+                    }
+                },
+                new TagOption
+                {
+                    Letter = "D",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^(?<PartyIdentifier>(\/[A-Z]{1,1})?(\/[A-Z0-9a-z\/\-?().,'+: ]{1,34})?)?$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "PartyIdentifier" },
+                            Optional = true
+                        },
+                        new TagOptionRow {
+                            Regex = new[] { new Regex(@"^(?<NameAddress>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,35})$", RegexOptions.Compiled) },
+                            Lines = 4,
+                            ValueNames = new[] { "NameAddress" }
+                        }
+                    }
+                },
+                new TagOption
+                {
+                    Description = "Mixed Payment Details",
+                    Letter = "M",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,35})$", RegexOptions.Compiled) },
+                            Lines = 4,
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                },
+                new TagOption
+                {
+                    Description = "Negotiation/Deferred Payment Details",
+                    Letter = "P",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,35})$", RegexOptions.Compiled) },
+                            Lines = 4,
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                }
+            );
+            Tag("43", "Partial Shipments",
+                new TagOption()
+                {
+                    Description = "Partial Shipments",
+                    Letter = "A",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex("^(?<Code>ALLOWED|CONDITIONAL|NOT ALLOWED)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "Code" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "T",
+                    Description = "Transhipment",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex("^(?<Code>ALLOWED|CONDITIONAL|NOT ALLOWED)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "Code" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "P",
+                    Description = "Partial Shipments",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex("^(?<Code>ALLOWED|CONDITIONAL|NOT ALLOWED)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "Code" }
+                        }
+                    }
+                }
+            );
+
+            Tag("44", "Place of Taking in Charge/Dispatch from .../Place of Receipt",
+                new TagOption()
+                {
+                    Letter = "A",
+                    Description = "Place of Taking in Charge/Dispatch from .../Place of Receipt",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,65})$", RegexOptions.Compiled) },
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "E",
+                    Description = "Port of Loading/Airport of Departure",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,65})$", RegexOptions.Compiled) },
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "F",
+                    Description = "Port of Discharge/Airport of Destination",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,65})$", RegexOptions.Compiled) },
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "B",
+                    Description = "Place of Final Destination/For Transportation to .../Place of Delivery",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,65})$", RegexOptions.Compiled) },
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "C",
+                    Description = "Place of Final Destination/For Transportation to .../Place of Delivery",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^(?<Date>[0-9]{6,6})$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "Date" }
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "D",
+                    Description = "Shipment Period",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex(@"^(?<Narrative>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,65})$", RegexOptions.Compiled) },
+                            Lines = 6,
+                            ValueNames = new[] { "Narrative" }
+                        }
+                    }
+                }
+            );
+
+            Tag("45", "Description of Goods and/or Services",
+                new TagOption()
+                {
+                    Letter = "A",
+                    Description = "Description of Goods and/or Services",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "Narrative" },
+                            Lines = 100
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "B",
+                    Description = "Description of Goods and/or Services",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$") },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$"),
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative,1.agg.prev:Item:Narrative" },
+                            Lines = 99
+                        }
+                    }
+                }
+            );
+            Tag("46", "Documents Required",
+                new TagOption()
+                {
+                    Letter = "A",
+                    Description = "Documents Required",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "Narrative" },
+                            Lines = 100
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "B",
+                    Description = "Documents Required",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$") },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$"),
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative,1.agg.prev:Item:Narrative" },
+                            Lines = 99
+                        }
+                    }
+                }
+            );
+
+            Tag("47", "Additional Conditions",
+               new TagOption()
+               {
+                   Letter = "A",
+                   Description = "Additional Conditions",
+                   Rows = new[]
+                   {
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "Narrative" },
+                            Lines = 100
+                        }
+                   }
+               },
+               new TagOption()
+               {
+                   Letter = "B",
+                   Description = "Additional Conditions",
+                   Rows = new[]
+                   {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$") },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$"),
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative,1.agg.prev:Item:Narrative" },
+                            Lines = 99
+                        }
+                   }
+               }
+           );
+
+            Tag("48", null,
+                new TagOption()
+                {
+                    Letter = "",
+                    Description = "Period for Presentation in Days",
+                    Rows = new[] {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^(?<Days>[0-9]{1,3})(/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ ]{1,35}))?$", RegexOptions.Compiled) },
+                            ValueNames = new[] { "Days", "Narrative" }
+                        },
+                    },
+                });
+
+            Tag("49", "",
+                new TagOption()
+                {
+                    Letter = "",
+                    Description = "Confirmation Instructions",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex("^(?<Instruction>CONFIRM|MAY ADD|WITHOUT)$", RegexOptions.Compiled) },
+                            ValueNames = new[] { "Instruction" }
+                        }
+                    }
+
+                },
+                new TagOption()
+                {
+                    Letter = "G",
+                    Description = "Special Payment Conditions for Beneficiary",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "Narrative" },
+                            Lines = 100
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "H",
+                    Description = "Special Payment Conditions for Receiving Bank",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "Narrative" },
+                            Lines = 100
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "M",
+                    Description = "Special Payment Conditions for Beneficiary",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$") },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$"),
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative,1.agg.prev:Item:Narrative" },
+                            Lines = 99
+                        }
+                    }
+                },
+                new TagOption()
+                {
+                    Letter = "N",
+                    Description = "Special Payment Conditions for Receiving Bank",
+                    Rows = new[]
+                    {
+                        new TagOptionRow
+                        {
+                            Regex = new [] { new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$") },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new [] {
+                                new Regex(@"^\/(?<Code>(ADD|DELETE|REPALL))\/(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,57})$"),
+                                new Regex(@"^(?<Narrative>[A-Z0-9a-z\/\-?().,'+ =:!""%&*<>;{@#_ ]{1,65})$")
+                            },
+                            ValueNames = new[] { "$,0.agg:Item:Code:Narrative,1.agg.prev:Item:Narrative" },
+                            Lines = 99
+                        }
+                    }
+                }
+            );
+
+            Tag("41", "Available With ... By ...",
+                new TagOption
+                {
+                    Letter = "A",
+                    Rows = new[] {
+                        new TagOptionRow {
+                            Regex = new[] { new Regex("^(?<IdentifierCode>[A-Z]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3})?)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "IdentifierCode" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex("^(?<Code>BY ACCEPTANCE|BY DEF PAYMENT|BY MIXED PYMT|BY NEGOTIATION|BY PAYMENT)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "Code" }
+                        }
+                    }
+                },
+                new TagOption
+                {
+                    Letter = "D",
+                    Rows = new[] {
+                        new TagOptionRow {
+                            Regex = new[] {
+                                new Regex(@"^(?<Name>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,35})$", RegexOptions.Compiled)
+                            },
+                            ValueNames = new[] { "Name" }
+                        },
+                        new TagOptionRow {
+                            Regex = new[] { new Regex(@"^(?<Address>[A-Za-z0-9\/\-\?\:\(\)\.,'\+ ]{1,35})$", RegexOptions.Compiled) },
+                            Lines = 3,
+                            ValueNames = new[] { "Address" }
+                        },
+                        new TagOptionRow
+                        {
+                            Regex = new[] { new Regex("^(?<Code>BY ACCEPTANCE|BY DEF PAYMENT|BY MIXED PYMT|BY NEGOTIATION|BY PAYMENT)$", RegexOptions.Compiled) },
+                            ValueNames = new [] { "Code" }
+                        }
+                    }CONNECTED(00005739)
+depth=2C=US, 0="VeriSing, Inc.", OU=Verising Trust Network, OU=" (c)20220 Verising, Inc.-
+For authorised use only",CN=VeriSing Class 3 Public Primary
+Certification Authority-DB-
+Certificate chain
+Os:/2.3.3.3 .5.2.272.31.2.1.3=LB/2.3.3.3.5.2.272.31.2.1.1=48-50 48-50 ST. JOHN’S RD, LONDON SW11 1PR,
+UK /business Category=Privat Organisation/serial Number=18561237/C=DB/postal Code=CH-3267
+/ST=48-50 ST. TAUNUSANLAGE12, 60325 Frankfurt am Main, GERMANY/Sender
+Web Link https://ebankingdb.com/workbench/inde.do7logdedon&locale=en-la&NavLB_EBCH=4916.3611.3513.12
+CONNECTED
+HEADER 1: {F04032022DEUTDEFFXXXDEUTDEDB10178936724537H
+HEADER 1: {F04032022#DEUTDEFFXXX: 1.69983000 DB70982300000887300877529}
+PRT UR7D-49677843-SWIFT ACKS-1905-E -2++ DEUTDEDB101 ++++RCVD++ NOTIFICATION (TRANSMISSION) OF ORIGINAL SENT
+SECURITY CONFIRMATION CODE CLEARING : X9917387329831
+HOUSE NUMBER : DEUTDEFFXXX/HEBA36780044
+RCVD++ NETWORK DELIVERY STATUS : NETWORK
+RCVD++ BRANCH NETWORK : 499357-DEUTDEFFXXX392357
+RCVD++ MESSAGE INPUT REFERENCE : 04032022DEUTDEFFXXXDEUTDEDB10178936724537833693266853
+RCVD++ TRANSACTION ID : 04032022DEUTDEFFXXX217296788RCVD++ NOTIFICATION (TRANSMISSION) OF ORIGINAL SENT
+SECURITY CONFIRMATION CODE CLEARING : X9917387329831
+HOUSE NUMBER : DEUTDEFFXXX/HEBA36780044
+RCVD++ NETWORK DELIVERY STATUS : NETWORK
+RCVD++ BRANCH NETWORK : 499357-DEUTDEFFXXX392357
+RCVD++ MESSAGE INPUT REFERENCE : 04032022DEUTDEFFXXXDEUTDEDB10178936724537833693266853
+RCVD++ TRANSACTION ID : 04032022DEUTDEFFXXX217296788 self.assertEqual(mt103.text.regulatory_reporting, "Test this")
+        self.assertEqual(mt103.text.sender_to_receiver_information, None)
+        self.assertEqual(mt103.text.original_ordered_amount, "9999,0")
+        self.assertEqual(
+            mt103.text.beneficiary,
+            "/201001020 First Name Last Name a12345bc6d789ef01a23 Nowhere NL"
+            "/201001020 First Name Last Name a12345bc6d789ef01a23 Nowhere NL",
+        )
+        self.assertEqual(
+            mt103.text.remittance_information,
+            "test reference test reason payment group: 1234567-ABCDEF"
+            "test reference test reason payment group: 1234567-ABCDEF",
+        )
+        self.assertEqual(mt103.text.details_of_charges, "SHA")
+        self.assertEqual(mt103.text.sender_correspondent, "/20100213012345")
+@@ -240,18 +250,16 @@ def test__populate_by_parsing_message4(self):
+        self.assertEqual(mt103.text.bank_operation_code, "CRED")
+        self.assertEqual(mt103.text.date, date(2000, 5, 26))
+        self.assertEqual(
+            mt103.text.ordering_customer,
+            "FRANZ HOLZAPFEL GMBH\nVIENNA"
+            mt103.text.ordering_customer, "FRANZ HOLZAPFEL GMBH\nVIENNA"
+        )
+        self.assertIsNone(mt103.text.regulatory_reporting)
+        self.assertEqual(
+            mt103.text.sender_to_receiver_information,
+            "/INS/CHASUS33"
+            mt103.text.sender_to_receiver_information, "/INS/CHASUS33"
+        )
+        self.assertEqual(mt103.text.original_ordered_amount, "1121,50")
+        self.assertEqual(
+            mt103.text.beneficiary,
+            "723491524\nC. KLEIN\nBLOEMENGRACHT 15\nAMSTERDAM"
+            "723491524\nC. KLEIN\nBLOEMENGRACHT 15\nAMSTERDAM",
+        )
+        self.assertIsNone(mt103.text.remittance_information)
+        self.assertEqual(mt103.text.details_of_charges, "SHA")
+@@ -268,3 +276,7 @@ def test_truthyness(self):
+        self.assertFalse(MT103("").text)
+        self.assertFalse(MT103("test").text)
+        self.assertTrue(MT103(MESSAGE1).text)
+           "callsites": {
+      "version": "0.2.0",
+      "resolved": "https://registry.npmjs.org/callsites/-/callsites-0.2.0.tgz",
+      "integrity": "sha1-r6uWJikQp/M8GaV3WCXGnzTjUMo=",
+      "dev": true
+    },
+    "chai": {
+      "version": "4.0.2",
+      "resolved": "https://registry.npmjs.org/chai/-/chai-4.0.2.tgz",
+      "integrity": "sha1-L3MnxN5vOF3XeHmZ4qsCaXoyuDs=",
+      "dev": true
+    },
+    "chalk": {
+      "version": "1.1.3",
+      "resolved": "https://registry.npmjs.org/chalk/-/chalk-1.1.3.tgz",
+      "integrity": "sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=",
+      "dev": true
+    },
+    "check-error": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/check-error/-/check-error-1.0.2.tgz",
+      "integrity": "sha1-V00xLt2Iu13YkS6Sht1sCu1KrII=",
+      "dev": true
+    },
+    "circular-json": {
+      "version": "0.3.1",
+      "resolved": "https://registry.npmjs.org/circular-json/-/circular-json-0.3.1.tgz",
+      "integrity": "sha1-vos2rvzN6LPKeqLWr8B6NyQsDS0=",
+      "dev": true
+    },
+    "cli-cursor": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz",
+      "integrity": "sha1-s12sN2R5+sw+lHR9QdDQ9SOP/LU=",
+      "dev": true
+    },
+    "cli-width": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/cli-width/-/cli-width-2.1.0.tgz",
+      "integrity": "sha1-sjTKIJsp72b8UY2bmNWEewDt8Ao=",
+      "dev": true
+    },
+    "co": {
+      "version": "4.6.0",
+      "resolved": "https://registry.npmjs.org/co/-/co-4.6.0.tgz",
+      "integrity": "sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=",
+      "dev": true
+    },
+    "commander": {
+      "version": "2.9.0",
+      "resolved": "https://registry.npmjs.org/commander/-/commander-2.9.0.tgz",
+      "integrity": "sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q=",
+      "dev": true
+    },
+    "concat-map": {
+      "version": "0.0.1",
+      "resolved": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",
+      "integrity": "sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=",
+      "dev": true
+    },
+    "concat-stream": {
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/concat-stream/-/concat-stream-1.6.0.tgz",
+      "integrity": "sha1-CqxmL9Ur54lk1VMvaUeE5wEQrPc=",
+      "dev": true
+    },
+    "core-util-is": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz",
+      "integrity": "sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=",
+      "dev": true
+    },
+    "debug": {
+      "version": "2.6.8",
+      "resolved": "https://registry.npmjs.org/debug/-/debug-2.6.8.tgz",
+      "integrity": "sha1-5zFTHKLt4n0YgiJCfaF4IdaP9Pw=",
+      "dev": true
+    },
+    "deep-eql": {
+      "version": "2.0.2",
+      "resolved": "https://registry.npmjs.org/deep-eql/-/deep-eql-2.0.2.tgz",
+      "integrity": "sha1-sbrAblbwp2d3aG1Qyf63XC7XZ5o=",
+      "dev": true,
+      "dependencies": {
+        "type-detect": {
+          "version": "3.0.0",
+          "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-3.0.0.tgz",
+          "integrity": "sha1-RtDMhVOrt7E6NSsNbeov1Y8tm1U=",
+          "dev": true
+        }
